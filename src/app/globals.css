@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #ff0000;
+  --color-secondary: #000000;
+  --color-background: #ffffff;
+  --color-text: #000000;
+  --color-text-light: #ffffff;
+  --header-height: 100px;
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+@keyframes beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-beat {
+  animation: beat 1s ease-in-out infinite;
+}
+
+.ql-editor {
+  line-height: 1.7;
+  color: #1f2937; /* gray-800 */
+}
+
+.ql-editor p {
+  margin-bottom: 1rem;
+}
+
+.ql-editor ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.ql-editor ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+
+.ql-editor blockquote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #4b5563;
+}
