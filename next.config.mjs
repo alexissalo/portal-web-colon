@@ -1,10 +1,10 @@
-
 const nextConfig = {
   images: {
     domains: [
       "hebbkx1anhila5yf.public.blob.vercel-storage.com",
       "vercel-storage.com",
       "public.blob.vercel-storage.com",
+      "media.clubcolonchivilcoy.com", // ✅ agregado
     ],
     remotePatterns: [
       {
@@ -15,9 +15,13 @@ const nextConfig = {
         protocol: "https",
         hostname: "**.public.blob.vercel-storage.com",
       },
+      {
+        protocol: "https",
+        hostname: "media.clubcolonchivilcoy.com", // ✅ agregado
+        pathname: "/**",
+      },
     ],
   },
-  // Asegúrate de que no haya ninguna configuración que sobrescriba los alias
 }
 
 export default nextConfig
