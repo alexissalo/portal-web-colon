@@ -194,7 +194,7 @@ export default function TenisPage() {
                   defienden los colores rojinegros en cada torneo del circuito.
                 </p>
               </div>
-              <div className="md:w-1/2 relative h-[360px]">
+              <div className="w-full md:w-1/2 relative h-[260px] md:h-[360px]">
                 <Image
                   src="/instalaciones/tenis2.jpg"
                   alt="Circuito Chivilcoyano de Tenis"
@@ -210,7 +210,7 @@ export default function TenisPage() {
         <section className="py-12 bg-gray-100">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-10">
-              <div className="md:w-1/2 relative h-[400px]">
+              <div className="w-full md:w-1/2 relative h-[260px] md:h-[400px]">
                 <Image
                   src="/instalaciones/tenisescuela.jpg"
                   alt="Escuela de Tenis"
@@ -268,7 +268,7 @@ export default function TenisPage() {
                   conocer horarios de profesores y disponibilidad de turnos.
                 </p>
               </div>
-              <div className="md:w-1/2 rounded-lg overflow-hidden h-[360px]">
+              <div className="w-full md:w-1/2 rounded-lg overflow-hidden h-[260px] md:h-[360px]">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720.160043603677!2d-60.03078687755193!3d-34.89069670296491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bebab3a65df2b5%3A0xbf855ce9ed321fa8!2sColon%20Chivilcoy!5e0!3m2!1ses-419!2sar!4v1775788761107!5m2!1ses-419!2sar"
                   width="100%"

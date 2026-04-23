@@ -105,7 +105,7 @@ export default function BasquetPage() {
         <section className="py-12 bg-black text-white">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-10">
-              <div className="md:w-1/2 relative h-[360px] rounded-lg overflow-hidden">
+              <div className="w-full md:w-1/2 relative h-[260px] md:h-[360px] rounded-lg overflow-hidden">
                 <Image
                   src="/instalaciones/complejobasquet.jpg"
                   alt="Estadio Oscar y Alfredo Barca"

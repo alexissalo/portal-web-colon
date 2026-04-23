@@ -60,34 +60,57 @@ export default function ProductDetails({ producto }) {
         </div>
       )}
 
-      {/* Selección de talle */}
       {producto.stock && producto.stock.length > 0 && (
+  <div>
+    {/* Si el único talle es "Único", mostrar stock directo sin botones */}
+    {producto.stock.length === 1 && producto.stock[0].talle_nombre === "Único" ? (
+      <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
         <div>
-          <h3 className="text-lg font-semibold mb-3">Talle</h3>
-          <div className="grid grid-cols-4 gap-2">
-            {producto.stock.map((stockItem) => (
-              <button
-                key={stockItem.id_talle}
-                onClick={() => setSelectedTalle(stockItem.talle_nombre)}
-                disabled={stockItem.cantidad === 0}
-                className={`p-3 border rounded-lg text-center font-medium transition-colors ${
-                  stockItem.cantidad === 0
-                    ? "border-gray-200 text-gray-400 cursor-not-allowed bg-gray-50"
-                    : selectedTalle === stockItem.talle_nombre
-                      ? "border-red-600 bg-red-600 text-white"
-                      : "border-gray-300 hover:border-red-600 hover:text-red-600"
-                }`}
-              >
-                {stockItem.talle_nombre}
-                {stockItem.cantidad === 0 && <div className="text-xs mt-1">Sin stock</div>}
-              </button>
-            ))}
-          </div>
-          {selectedTalle && (
-            <p className="text-sm text-gray-600 mt-2">Stock disponible: {getAvailableStock()} unidades</p>
-          )}
+          <p className="text-sm text-gray-500 font-medium">Stock disponible</p>
+          <p className="text-2xl font-bold text-gray-900">
+            {producto.stock[0].cantidad}
+            <span className="text-sm font-normal text-gray-500 ml-1">unidades</span>
+          </p>
         </div>
-      )}
+        {producto.stock[0].cantidad === 0 && (
+          <span className="ml-auto text-sm font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full">
+            Sin stock
+          </span>
+        )}
+      </div>
+    ) : (
+      /* Si tiene talles reales, mostrar los botones normalmente */
+      <>
+        <h3 className="text-lg font-semibold mb-3">Talle</h3>
+        <div className="grid grid-cols-4 gap-2">
+          {producto.stock.map((stockItem) => (
+            <button
+              key={stockItem.id_talle}
+              onClick={() => setSelectedTalle(stockItem.talle_nombre)}
+              disabled={stockItem.cantidad === 0}
+              className={`p-3 border rounded-lg text-center font-medium transition-colors ${
+                stockItem.cantidad === 0
+                  ? "border-gray-200 text-gray-400 cursor-not-allowed bg-gray-50"
+                  : selectedTalle === stockItem.talle_nombre
+                    ? "border-red-600 bg-red-600 text-white"
+                    : "border-gray-300 hover:border-red-600 hover:text-red-600"
+              }`}
+            >
+              {stockItem.talle_nombre}
+              {stockItem.cantidad === 0 && <div className="text-xs mt-1">Sin stock</div>}
+            </button>
+          ))}
+        </div>
+        {selectedTalle && (
+          <p className="text-sm text-gray-600 mt-2">
+            Stock disponible: {getAvailableStock()} unidades
+          </p>
+        )}
+      </>
+    )}
+  </div>
+)}
+      
 
 
       {/* Información adicional */}

@@ -5,6 +5,8 @@ import ProductGrid from "../../components/ProductGrid"
 import { generateMetadata as generateSeoMetadata } from "@/src/lib/seo"
 import Link from "next/link"
 
+export const dynamic = "force-dynamic"
+
 export const metadata = generateSeoMetadata({
   title: "Novedades | Tienda Club Colón de Chivilcoy",
   description: "Los últimos productos incorporados a la tienda oficial del Club Colón de Chivilcoy.",

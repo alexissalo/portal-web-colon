@@ -5,6 +5,8 @@ import ShopFooter from "../components/ShopFooter";
 import { generateMetadata } from "../../lib/seo";
 import { buildProductoSlug } from "@/src/lib/slugify";
 
+export const dynamic = "force-dynamic"
+
 export const metadata = generateMetadata({
   title: "Tienda Oficial | Club Colon de Chivilcoy",
   description:

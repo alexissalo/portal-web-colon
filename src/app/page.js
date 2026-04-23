@@ -8,6 +8,8 @@ import HeroBanner from "./components/HeroBanner"
 import { BookOpenText, Building, ShoppingBag, MapPin, Instagram } from "lucide-react"
 import { generateMetadata } from "../lib/seo"
 
+export const dynamic = "force-dynamic"
+
 
 export const metadata = generateMetadata({
   title: "Inicio | Club Colon de Chivilcoy",

@@ -7,25 +7,26 @@ export async function GET(request, { params }) {
     const slug = params?.slug
     const id = extractIdFromSlug(slug)  // 👈 único cambio
 
-    // Obtener el producto con sus detalles
     const [productos] = await pool.query(
-      `
+    `
       SELECT 
-        p.id_producto,
-        p.nombre,
-        p.descripcion,
-        p.precio,
-        p.fecha_creacion,
-        c.nombre as categoria_nombre,
-        c.id_categoria,
-        GROUP_CONCAT(DISTINCT i.ruta_imagen) as imagenes
+       p.id_producto,
+       p.nombre,
+       p.descripcion,
+       p.precio,
+       p.fecha_creacion,
+       c.nombre as categoria_nombre,
+       c.id_categoria,
+       GROUP_CONCAT(DISTINCT i.ruta_imagen) as imagenes,
+       COALESCE(SUM(sp.cantidad), 0) as stock_total_db  
       FROM productos p
       LEFT JOIN categorias_productos c ON p.id_categoria = c.id_categoria
       LEFT JOIN imagenes_productos i ON p.id_producto = i.id_producto
+      LEFT JOIN stock_productos sp ON p.id_producto = sp.id_producto  
       WHERE p.id_producto = ?
       GROUP BY p.id_producto
-    `,
-      [id],
+     `,
+    [id],
     )
 
     if (productos.length === 0) {
@@ -34,20 +35,22 @@ export async function GET(request, { params }) {
 
     const producto = productos[0]
 
-    // Obtener el stock por talles
+    
+
     const [stock] = await pool.query(
-      `
-      SELECT 
-        sp.cantidad,
-        t.id_talle,
-        t.nombre as talle_nombre,
-        t.descripcion as talle_descripcion
+    `
+     SELECT 
+      sp.id_stock,
+      sp.cantidad,
+      sp.id_talle,
+      COALESCE(t.nombre, 'Único') as talle_nombre,
+      t.descripcion as talle_descripcion
       FROM stock_productos sp
-      JOIN talles_productos t ON sp.id_talle = t.id_talle
+      LEFT JOIN talles_productos t ON sp.id_talle = t.id_talle 
       WHERE sp.id_producto = ?
       ORDER BY t.nombre
-    `,
-      [id],
+      `,
+     [id],
     )
 
     // Obtener productos relacionados (misma categoría)
@@ -70,12 +73,17 @@ export async function GET(request, { params }) {
 
     // Procesar los datos
     const productoCompleto = {
-      ...producto,
-      imagenes: producto.imagenes ? producto.imagenes.split(",") : [],
-      stock: stock,
-      stock_total: stock.reduce((total, item) => total + item.cantidad, 0),
-      tiene_stock: stock.some((item) => item.cantidad > 0),
-    }
+ 	 ...producto,
+ 	 imagenes: producto.imagenes ? producto.imagenes.split(",") : [],
+ 	 stock: stock,
+ 	 // 👇 si el array de stock está vacío, usa el valor de la query principal
+ 	 stock_total: stock.length > 0
+   	 ? stock.reduce((total, item) => total + item.cantidad, 0)
+   	 : Number(producto.stock_total_db || 0),
+ 	 tiene_stock: stock.length > 0
+   	 ? stock.some((item) => item.cantidad > 0)
+   	 : Number(producto.stock_total_db || 0) > 0,
+	}
 
     const relacionadosProcesados = relacionados.map((rel) => ({
       ...rel,

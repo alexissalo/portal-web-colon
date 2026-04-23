@@ -228,7 +228,7 @@ export default function FutbolPage() {
                   respaldo de comercios y empresas de Chivilcoy.
                 </p>
               </div>
-              <div className="md:w-1/2 relative h-[360px] rounded-lg overflow-hidden">
+              <div className="w-full md:w-1/2 relative h-[260px] md:h-[360px]  rounded-lg overflow-hidden">
                 <Image
                   src="/imagenes/camiseta.jpg"
                   alt="Camiseta rojinegra de Colón"
@@ -247,7 +247,7 @@ export default function FutbolPage() {
               <MapPin className="text-red-600" /> Dónde Juega Colón
             </h2>
             <div className="flex flex-col md:flex-row gap-8 items-center">
-              <div className="md:w-1/2 relative h-[320px] rounded-lg overflow-hidden">
+              <div className="w-full md:w-1/2 relative h-[260px] md:h-[320px] rounded-lg overflow-hidden">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3272.6275954594694!2d-60.0307869!3d-34.8906967!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bebab3bda86f3f%3A0xf0229d56ea2c298a!2sClub%20Social%20y%20Deportivo%20Col%C3%B3n%20-%20Estadio%20de%20f%C3%BAtbol%20y%20Campo%20de%20deportes!5e0!3m2!1ses-419!2sar!4v1775792731349!5m2!1ses-419!2sar"
                   width="100%"
@@ -294,7 +294,7 @@ export default function FutbolPage() {
                   de jugadores con fuerte sentido de pertenencia.
                 </p>
               </div>
-              <div className="md:w-1/2 relative h-[400px]">
+              <div className="w-full md:w-1/2 relative h-[260px] md:h-[400px]">
                 <Image
                   src="/imagenes/pretemporadainferiores.jpg"
                   alt="Divisiones Inferiores"

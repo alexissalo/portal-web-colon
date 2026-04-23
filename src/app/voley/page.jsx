@@ -192,7 +192,7 @@ export default function VoleyPage() {
                   ))}
                 </div>
               </div>
-              <div className="md:w-1/2 relative h-[400px]">
+              <div className="w-full md:w-1/2 relative h-[260px] md:h-[400px]">
                 <Image
                   src="/imagenes/voley1.jpg"
                   alt="Formativas de Vóley"
@@ -209,7 +209,7 @@ export default function VoleyPage() {
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-10">
               {/* Mapa a la izquierda */}
-              <div className="md:w-1/2 rounded-lg overflow-hidden h-[360px]">
+              <div className="w-full md:w-1/2 rounded-lg overflow-hidden h-[260px] md:h-[360px]">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1120.1557395592192!2d-60.01980161038725!3d-34.892603393896735!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bea5497567e1bb%3A0x2c2d7f9ad84b7eff!2sClub%20Social%20y%20Deportivo%20Col%C3%B3n!5e0!3m2!1ses-419!2sar!4v1775862573485!5m2!1ses-419!2sar"
                   width="100%"
